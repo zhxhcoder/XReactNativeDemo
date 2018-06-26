@@ -22,19 +22,12 @@ public class GsonParser {
 
     /**
      * 多态问题的处理
-     ProfileHomeResponse data = GsonParser.parse(
-     resultStr,
-     ProfileHomeResponse.class,
-     new TypeToken<ProfileHomeResponse.ProfileHomeBaseType>() {
-     }.getType(),
-     new ProfileHomeResponse.BaseModelAdapter());
-
-     * @param resultStr
-     * @param t
-     * @param baseType
-     * @param typeAdapter
-     * @param <T>
-     * @return
+     * @param resultStr 接口返回的字符串
+     * @param t 要转换成的类型
+     * @param baseType 要转换成的类型的共同基类
+     * @param typeAdapter 自定义解析过程
+     * @param <T> 转换成的类型
+     * @return 转换成的类型
      */
     public static <T> T parse(String resultStr, Class<T> t, Type baseType, Object typeAdapter) {
         if (TextUtils.isEmpty(resultStr))

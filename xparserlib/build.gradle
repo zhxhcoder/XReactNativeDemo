@@ -61,6 +61,7 @@ task copyApk {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.google.code.gson:gson:2.8.2'
 }
 
 def siteUrl = 'https://github.com/zhxhcoder/XParser'   //项目的主页

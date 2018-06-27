@@ -1,4 +1,4 @@
-package com.zhxh.android.xparser;
+package com.zhxh.xparser;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;

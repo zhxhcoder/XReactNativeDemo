@@ -26,11 +26,12 @@ public class GsonParser {
 
     /**
      * 多态问题的处理
-     * @param resultStr 接口返回的字符串
-     * @param t 要转换成的类型
-     * @param baseType 要转换成的类型的共同基类
+     *
+     * @param resultStr   接口返回的字符串
+     * @param t           要转换成的类型
+     * @param baseType    要转换成的类型的共同基类
      * @param typeAdapter 自定义解析过程
-     * @param <T> 转换成的类型
+     * @param <T>         转换成的类型
      * @return 转换成的类型
      */
     public static <T> T parse(String resultStr, Class<T> t, Type baseType, Object typeAdapter) {
@@ -43,20 +44,19 @@ public class GsonParser {
     }
 
 
-    public static String getGsonValue(String key, CharSequence input) {
-
+    public static String parseGsonValue(String key, CharSequence input) {
         if (TextUtils.isEmpty(input)) return "";
         if (TextUtils.isEmpty(key)) return "";
         List<String> matches = new ArrayList<>();
 
-        String regex="(?<=\""+key+"\"\\s\\*:\\s\\*\")[^\"]\\*";
+        String regex = "(?<=\"" + key + "\":\")[^\"]*";
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
         while (matcher.find()) {
             matches.add(matcher.group());
         }
-        if (matches.size()>0) {
+        if (matches.size() > 0) {
             return matches.get(0);
         }
         return "";

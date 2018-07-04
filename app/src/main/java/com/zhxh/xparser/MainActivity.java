@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
 
             UserTrendResponse response = GsonParser.parse(input, UserTrendResponse.class, new TypeToken<String>() {
-            }.getType(), new UserTrendResponse.BaseModelAdapter());
+            }.getType(), new GsonParser.StringAdapter());
 
             gson_label.setText(response.getData().get(0).getContentDict());
             gson_value.setText(GsonParser.parseGsonValue("stockText", response.getData().get(0).getContentDict()));

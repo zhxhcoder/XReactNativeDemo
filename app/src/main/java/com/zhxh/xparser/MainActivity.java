@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.zhxh.xparserlib.GsonParser;
+
 public class MainActivity extends AppCompatActivity {
 
     /**
@@ -114,7 +116,10 @@ public class MainActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            TextView gson_label = (TextView) rootView.findViewById(R.id.gson_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+
+            gson_label.setText(GsonParser.getGsonValue("time","{\"timezone\":\"\"},{\"time\":\"05-2113:06\"}"));
             return rootView;
         }
     }

@@ -6,6 +6,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GsonParser {
 
@@ -37,6 +41,27 @@ public class GsonParser {
                 .create();
         return gson.fromJson(resultStr, t);
     }
+
+
+    public static String getGsonValue(String key, CharSequence input) {
+
+        if (TextUtils.isEmpty(input)) return "";
+        if (TextUtils.isEmpty(key)) return "";
+        List<String> matches = new ArrayList<>();
+
+        String regex="(?<=\""+key+"\"\\s\\*:\\s\\*\")[^\"]\\*";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        while (matcher.find()) {
+            matches.add(matcher.group());
+        }
+        if (matches.size()>0) {
+            return matches.get(0);
+        }
+        return "";
+    }
+
 
 /*    public static class BaseModelAdapter implements JsonDeserializer<ProfileHomeBaseType> {
         @Override

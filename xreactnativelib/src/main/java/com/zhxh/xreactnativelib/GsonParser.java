@@ -1,4 +1,4 @@
-package com.zhxh.xparserlib;
+package com.zhxh.xreactnativelib;
 
 import android.text.TextUtils;
 
